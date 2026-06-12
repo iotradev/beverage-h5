@@ -14,8 +14,9 @@ body {
   margin: 0 auto;
   min-height: 100vh;
   position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
-.page { display: none; min-height: 100vh; padding-bottom: 80px; }
+.page { display: none; min-height: 100vh; padding-bottom: 120px; }
 .page.active { display: block; }
 
 /* Header */
@@ -43,9 +44,10 @@ body {
   display: flex;
   box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
   z-index: 100;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 .tab-item {
-  flex: 1; text-align: center; padding: 8px 0;
+  flex: 1; text-align: center; padding: 10px 0;
   cursor: pointer; color: #999; font-size: 11px;
   border: none; background: none;
 }
@@ -134,7 +136,7 @@ body {
 .section-title small { font-size: 12px; color: #999; font-weight: 400; }
 .option-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .option-chip {
-  padding: 8px 16px;
+  padding: 10px 16px;
   background: #F5F5F5;
   border-radius: 20px;
   font-size: 13px;
@@ -142,6 +144,8 @@ body {
   cursor: pointer;
   border: 2px solid transparent;
   transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .option-chip.active {
   background: #FFF0E8;
@@ -160,11 +164,12 @@ body {
 .qty-btn.disabled { color: #ccc; }
 .qty-num { width: 40px; text-align: center; font-size: 16px; font-weight: 600; }
 .bottom-bar {
-  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  position: fixed; bottom: 56px; left: 50%; transform: translateX(-50%);
   width: 100%; max-width: 480px;
   background: #fff;
   display: flex; align-items: center; justify-content: space-between;
   padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
   box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
   z-index: 100;
 }
@@ -211,6 +216,7 @@ body {
   background: #fff;
   display: flex; align-items: center; justify-content: space-between;
   padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
   box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
   z-index: 99;
 }
@@ -231,6 +237,8 @@ body {
   border-radius: 10px; cursor: pointer;
   border: 2px solid transparent;
   font-size: 14px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .delivery-option.active {
   background: #FFF0E8; color: #FF6B35;
@@ -264,8 +272,11 @@ body {
   font-size: 15px; font-weight: 600; color: #333;
 }
 .summary-total-price { color: #FF6B35; font-size: 20px; }
+.checkout-page-bottom {
+  height: 80px;
+}
 .submit-btn {
-  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  position: fixed; bottom: 56px; left: 50%; transform: translateX(-50%);
   width: 100%; max-width: 480px;
   background: #FF6B35; color: #fff;
   padding: 16px; text-align: center;
@@ -377,7 +388,7 @@ body {
 
 /* Floating cart */
 .floating-cart {
-  position: fixed; bottom: 70px; right: 16px;
+  position: fixed; bottom: 130px; right: 16px;
   width: 56px; height: 56px;
   background: #FF6B35; border-radius: 50%;
   display: none; align-items: center; justify-content: center;
@@ -565,6 +576,7 @@ body {
       <span class="summary-total-price" id="checkoutTotal">¥0</span>
     </div>
   </div>
+  <div class="checkout-page-bottom"></div>
   <button class="submit-btn" id="submitBtn" onclick="submitOrder()">确认支付 ¥0</button>
 </div>
 
